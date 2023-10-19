@@ -1,11 +1,42 @@
 package candidatura;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ProcessoSeletivo {
     public static void main(String[] args) {
-        // selecionaCandidatos();
-        imprimirSelecionados();
+
+        String[] candidatos = { "GISELLE", "TIAGO", "MARCOS", "YAGO", "FELIPE" };
+        for (String candidato : candidatos) {
+            entrandoEmContato(candidato);
+        }
+    }
+
+    static void entrandoEmContato(String candidato) {
+        int tentativasRealizadas = 1;
+        boolean continuarTentando = true;
+        boolean atendeu = false;
+
+        do {
+            atendeu = atender();
+            continuarTentando = !atendeu;
+
+            if (continuarTentando) {
+                tentativasRealizadas++;
+            } else
+                System.out.println("Contato realizado com sucesso");
+
+        } while (continuarTentando && tentativasRealizadas < 3);
+
+        if (atendeu) {
+            System.out.println("Contato com candidato " + candidato + "na " + tentativasRealizadas + "ª tentativa");
+        } else
+            System.out.println("Não foi possivel contatar o candidato " + candidato + " Numero maximo de tentativas");
+
+    }
+
+    static boolean atender() {
+        return new Random().nextInt(3) == 1;
     }
 
     static void imprimirSelecionados() {
@@ -18,8 +49,8 @@ public class ProcessoSeletivo {
 
         System.out.println("forma abreviada de interação utilizando o FOR EACH");
 
-        for (String candidato : candidatos ) {
-            System.out.println("O candidato selecionado foi " + candidato );
+        for (String candidato : candidatos) {
+            System.out.println("O candidato selecionado foi " + candidato);
         }
     }
 
