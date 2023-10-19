@@ -2,7 +2,9 @@ package candidatura;
 
 public class ProcessoSeletivo {
     public static void main(String[] args) {
-        System.out.println("Processo seletivo");
+        // analisarCandidato(1500.0);
+        // analisarCandidato(2000.0);
+        analisarCandidato(2500.0);
     }
 
     static void analisarCandidato(double salarioPretendido){
